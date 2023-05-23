@@ -13,13 +13,14 @@ const Page = () => {
   const isClient = useIsClient();
   const token = useTokenStore((s) => s.token);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     (async () => {
       const { data } = await api.post<User>('/auth/me', {});
 
+      setIsLoading(false);
       setUser(data);
     })();
   }, []);

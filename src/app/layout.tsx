@@ -2,8 +2,6 @@ import './globals.css';
 import { Noto_Sans_KR } from 'next/font/google';
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
-import { menus } from '@/const/menus';
-import Link from 'next/link';
 import Header from '@/app/Header';
 import TestBtn from '@/components/client/TestBtn';
 

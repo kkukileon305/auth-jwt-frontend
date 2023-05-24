@@ -1,12 +1,12 @@
 import { menus } from '@/const/menus';
 import Link from 'next/link';
-import LoginMenu from '@/components/client/LoginMenu';
+import LoginMenu from '@/components/client/buttons/LoginMenu';
 
 const Header = () => {
   return (
     <header className='bg-white shadow'>
       <div className='flex justify-between max-w-5xl mx-auto p-4'>
-        <h1>
+        <h1 className='font-bold'>
           <Link href={'/'}>My Auth App</Link>
         </h1>
 

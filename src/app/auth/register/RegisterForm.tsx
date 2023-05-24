@@ -32,7 +32,12 @@ const RegisterForm = () => {
         username,
       });
 
-      router.push('/auth/login');
+      setModal({
+        title: 'Success',
+        body: 'You have successfully registered. Please login to continue',
+        type: 'success',
+        onConfirm: () => router.push('/auth/login'),
+      });
     } catch (error) {
       setIsLoading(false);
       setModal({

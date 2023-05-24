@@ -50,6 +50,7 @@ api.interceptors.response.use(
         }>;
 
         if (refreshError.response?.data?.statusCode === REFRESH_TOKEN_EXPIRED) {
+          setAuthHeaderToken('');
           useTokenStore.getState().setToken({
             accessToken: '',
             refreshToken: '',

@@ -2,7 +2,7 @@
 
 import { FormEventHandler, useState } from 'react';
 import Link from 'next/link';
-import api from '@/utils/api';
+import api, { setAuthHeaderToken } from '@/utils/api';
 import { useRouter } from 'next/navigation';
 import useTokenStore from '@/store/token.store';
 import { TokenResponse } from '@/types';
@@ -26,8 +26,8 @@ const LoginForm = () => {
         password,
       });
 
+      setAuthHeaderToken(data.accessToken);
       setToken(data);
-      api.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
 
       router.push('/profile');
     } catch (e) {

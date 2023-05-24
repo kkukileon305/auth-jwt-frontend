@@ -18,10 +18,14 @@ const Page = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await api.post<User>('/auth/me', {});
+      try {
+        const { data } = await api.post<User>('/auth/me');
 
+        setUser(data);
+      } catch (e) {
+        console.log(e);
+      }
       setIsLoading(false);
-      setUser(data);
     })();
   }, []);
 

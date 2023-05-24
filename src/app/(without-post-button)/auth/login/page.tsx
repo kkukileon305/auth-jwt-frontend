@@ -1,4 +1,4 @@
-import LoginForm from '@/app/auth/login/LoginForm';
+import LoginForm from '@/app/(without-post-button)/auth/login/LoginForm';
 
 const Page = () => {
   return (

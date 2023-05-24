@@ -1,4 +1,4 @@
-import RegisterForm from '@/app/auth/register/RegisterForm';
+import RegisterForm from '@/app/(without-post-button)/auth/register/RegisterForm';
 
 const Page = () => {
   return (

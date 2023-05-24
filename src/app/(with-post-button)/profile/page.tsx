@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useIsClient } from '@/hooks/useIsClient';
 import useTokenStore from '@/store/token.store';
-import LogoutBtn from '@/app/profile/LogoutBtn';
+import LogoutBtn from '@/app/(with-post-button)/profile/LogoutBtn';
 import api from '@/utils/api';
 import { User } from '@/types';
 import ProfileSkeleton from '@/components/server/skeletons/Profile.skeleton';

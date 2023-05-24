@@ -1,10 +1,11 @@
 import './globals.css';
-import { Noto_Sans_KR, Aleo } from 'next/font/google';
+import { Aleo } from 'next/font/google';
 import { ReactNode } from 'react';
 import { Metadata } from 'next';
-import Header from '@/app/Header';
+import Header from '@/app/(with-post-button)/Header';
 import TestBtn from '@/components/client/buttons/TestBtn';
 import Modal from '@/components/client/layout/Modal';
+import PostBtn from '@/components/server/buttons/PostBtn';
 
 const baseFont = Aleo({ subsets: ['latin'], weight: ['400', '700'] });
 

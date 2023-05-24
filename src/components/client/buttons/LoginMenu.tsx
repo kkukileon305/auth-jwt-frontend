@@ -9,7 +9,7 @@ const LoginMenu = () => {
   const token = useTokenStore((s) => s.token);
 
   if (!isClient) {
-    return <div className='h-6 w-32 bg-gray-300 rounded-xl' />;
+    return <div className='h-6 w-16 bg-gray-300 rounded-xl' />;
   }
 
   if (!token.refreshToken) {

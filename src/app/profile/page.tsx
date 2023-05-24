@@ -20,7 +20,7 @@ const Page = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.post<User>('/auth/me');
+        const { data } = await api.post<User>('/auth/profile');
 
         setUser(data);
       } catch (e) {

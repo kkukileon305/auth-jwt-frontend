@@ -2,9 +2,10 @@ import axios, { AxiosError } from 'axios';
 import useTokenStore from '@/store/token.store';
 import { REFRESH_TOKEN_EXPIRED, TOKEN_EXPIRED } from '@/const/ErrorCode';
 import { TokenResponse } from '@/types';
+import { useModalStore } from '@/store/modal.store';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL_DEV,
   headers: {
     Authorization: `Bearer ${useTokenStore.getState().token.accessToken}`,
   },
@@ -57,8 +58,11 @@ api.interceptors.response.use(
             userId: '',
           });
 
-          window.location.href = '/auth/login';
-
+          useModalStore.getState().setModal({
+            title: 'Login expired',
+            body: 'Please login again',
+            type: 'error',
+          });
           return Promise.reject(error);
         }
       }

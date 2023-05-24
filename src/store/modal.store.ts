@@ -4,6 +4,7 @@ type ModalContent = {
   title: string;
   body: string;
   type?: 'success' | 'error' | 'warning';
+  onConfirm?: () => void;
 };
 
 type ModalStore = {

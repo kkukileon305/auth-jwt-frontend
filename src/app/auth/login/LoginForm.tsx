@@ -6,9 +6,12 @@ import api, { setAuthHeaderToken } from '@/utils/api';
 import { useRouter } from 'next/navigation';
 import useTokenStore from '@/store/token.store';
 import { TokenResponse } from '@/types';
+import { AxiosError } from 'axios';
+import { useModalStore } from '@/store/modal.store';
 
 const LoginForm = () => {
   const router = useRouter();
+  const setModal = useModalStore((state) => state.setModal);
 
   const setToken = useTokenStore((s) => s.setToken);
 
@@ -30,8 +33,15 @@ const LoginForm = () => {
       setToken(data);
 
       router.push('/profile');
-    } catch (e) {
+    } catch (error) {
       setIsLoading(false);
+      setModal({
+        title: 'Error',
+        body:
+          (error as AxiosError<{ message: string }>).response?.data?.message ||
+          'Something went wrong',
+        type: 'error',
+      });
     }
   };
 

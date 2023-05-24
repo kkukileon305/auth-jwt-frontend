@@ -4,9 +4,12 @@ import { FormEventHandler, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import api from '@/utils/api';
+import { useModalStore } from '@/store/modal.store';
+import { AxiosError } from 'axios';
 
 const RegisterForm = () => {
   const router = useRouter();
+  const setModal = useModalStore((state) => state.setModal);
 
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -15,6 +18,11 @@ const RegisterForm = () => {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
+
+    if (!email || !password || !username) {
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -27,6 +35,13 @@ const RegisterForm = () => {
       router.push('/auth/login');
     } catch (error) {
       setIsLoading(false);
+      setModal({
+        title: 'Error',
+        body:
+          (error as AxiosError<{ message: string }>).response?.data?.message ||
+          'Something went wrong',
+        type: 'error',
+      });
     }
   };
 

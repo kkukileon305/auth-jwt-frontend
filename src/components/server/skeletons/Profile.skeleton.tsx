@@ -1,9 +1,12 @@
+import Title from '@/components/server/texts/Title';
+
 const array = new Array(5).fill(0).map((_, i) => `key${i}`);
 
 const ProfileSkeleton = () => {
   return (
-    <div className='bg-white p-4 flex flex-col gap-4'>
-      <span className='block h-8 w-24 bg-gray-200 rounded-xl animate-pulse' />
+    <div className='flex flex-col gap-4'>
+      <Title title='Profile' />
+
       <table className='flex w-full'>
         <thead className='w-32'>
           <tr className='flex flex-col'>

@@ -1,11 +1,18 @@
-import LoginForm from '@/app/(without-post-button)/auth/login/LoginForm';
+'use client';
+
+import LoginForm from '@/app/auth/login/LoginForm';
+import useTokenStore from '@/store/token.store';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
-  return (
-    <div className='max-w-2xl mx-auto p-4 bg-white'>
-      <LoginForm />
-    </div>
-  );
+  const router = useRouter();
+  const { refreshToken } = useTokenStore((state) => state.token);
+
+  if (refreshToken) {
+    router.push('/');
+  }
+
+  return <LoginForm />;
 };
 
 export default Page;

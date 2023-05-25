@@ -5,7 +5,11 @@ type Menu = {
 
 export const menus: Menu[] = [
   {
-    name: 'Home',
+    name: 'Main',
     href: '/',
+  },
+  {
+    name: 'Tags',
+    href: '/tags',
   },
 ];

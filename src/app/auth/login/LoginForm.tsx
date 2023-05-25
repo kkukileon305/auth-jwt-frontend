@@ -32,7 +32,7 @@ const LoginForm = () => {
       setAuthHeaderToken(data.accessToken);
       setToken(data);
 
-      router.push('/profile');
+      router.push('/');
     } catch (error) {
       setIsLoading(false);
       setModal({

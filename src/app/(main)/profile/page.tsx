@@ -4,10 +4,11 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useIsClient } from '@/hooks/useIsClient';
 import useTokenStore from '@/store/token.store';
-import LogoutBtn from '@/app/(with-post-button)/profile/LogoutBtn';
+import LogoutBtn from '@/app/(main)/profile/LogoutBtn';
 import api from '@/utils/api';
 import { User } from '@/types';
 import ProfileSkeleton from '@/components/server/skeletons/Profile.skeleton';
+import Title from '@/components/server/texts/Title';
 
 const Page = () => {
   const router = useRouter();
@@ -39,8 +40,8 @@ const Page = () => {
   }
 
   return (
-    <div className='bg-white p-4 flex flex-col gap-4'>
-      <h2 className='font-bold text-2xl'>Profile</h2>
+    <div className='flex flex-col gap-4'>
+      <Title title='Profile' />
 
       <table className='flex w-full'>
         <thead className='w-32'>

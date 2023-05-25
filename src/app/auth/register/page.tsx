@@ -1,11 +1,18 @@
-import RegisterForm from '@/app/(without-post-button)/auth/register/RegisterForm';
+'use client';
+
+import RegisterForm from '@/app/auth/register/RegisterForm';
+import { useRouter } from 'next/navigation';
+import useTokenStore from '@/store/token.store';
 
 const Page = () => {
-  return (
-    <div className='max-w-2xl mx-auto p-4 bg-white'>
-      <RegisterForm />
-    </div>
-  );
+  const router = useRouter();
+  const { refreshToken } = useTokenStore((state) => state.token);
+
+  if (refreshToken) {
+    router.push('/');
+  }
+
+  return <RegisterForm />;
 };
 
 export default Page;
